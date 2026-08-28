@@ -78,7 +78,11 @@ const Settings = {
     $('#customSettings').classList.toggle('d-none', !isCustom);
     $('#namedProviderSettings').classList.toggle('d-none', !isNamed);
     $('#modelIdSection').classList.toggle('d-none', isOpenRouter);
-    $('#openrouterExtras').classList.toggle('d-none', !isOpenRouter);
+    // Default Model select + Refresh Models button + Max Tokens + model list apply to
+    // every provider (AIService.fetchModels() dispatches per-provider already);
+    // only the OpenRouter credit/usage card is actually OpenRouter-specific.
+    $('#openrouterExtras').classList.remove('d-none');
+    $('#creditsSection').classList.toggle('d-none', !isOpenRouter);
     $('#securityWarning').classList.toggle('d-none', !isOpenRouter);
 
     if (isNamed) {
